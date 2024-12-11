@@ -42,4 +42,20 @@ public class Utility {
         }
         return newArr;
     }
+
+    public static int[] stringArrayListToIntArray(ArrayList<String> arr) {
+        int[] returnArr = new int[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            returnArr[i] = Integer.parseInt(arr.get(i) );
+        }
+        return returnArr;
+    }
+
+    public static int[] stringArrayListToIntArray(String[] arr) {
+        int[] returnArr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            returnArr[i] = Integer.parseInt(arr[i]);
+        }
+        return returnArr;
+    }
 }

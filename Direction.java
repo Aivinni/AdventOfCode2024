@@ -8,4 +8,10 @@ public class Direction {
         y = 1;
         this.angle = Math.atan((double) y / x);
     }
+
+    public Direction(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.angle = Math.atan((double) y / x);
+    }
 }
