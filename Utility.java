@@ -58,4 +58,110 @@ public class Utility {
         }
         return returnArr;
     }
+
+    public static String convertBase(String input, int inputBase, int targetBase) {
+        // Splits the input string into something usable by the program
+        String[] inputList = input.split(", ");
+
+        // converts input string into decimal
+        int decimal = 0;
+        for (String digit : inputList) {
+            int number = Integer.parseInt(digit.split(" ")[0]) * (int) (Math.pow(inputBase, Integer.parseInt(digit.split("\\^")[1])));
+            decimal += number;
+        }
+
+        // converts number to the target base, as an array
+        ArrayList<Integer> finalList = new ArrayList<>();
+        int remainder;
+        while (decimal > 0) {
+            remainder = decimal % targetBase;
+            decimal /= targetBase;
+            finalList.add(0, remainder);
+        }
+
+        // Make a String in the proper format and return it
+        StringBuilder returnString = new StringBuilder();
+        while (!finalList.isEmpty()) {
+            returnString.append(finalList.get(0)).append(" ").append(targetBase).append("^").append(finalList.size() - 1).append(", ");
+            finalList.remove(0);
+        }
+
+        return returnString.toString();
+    }
+
+    public static String decimalToBinary(String input) {
+        int decimal = Integer.parseInt(input);
+
+        // converts number to the target base, as an array
+        ArrayList<Integer> finalList = new ArrayList<>();
+        int remainder;
+        while (decimal > 0) {
+            remainder = decimal % 2;
+            decimal /= 2;
+            finalList.add(0, remainder);
+        }
+
+        // Make a String in the proper format and return it
+        StringBuilder returnString = new StringBuilder();
+        while (!finalList.isEmpty()) {
+            returnString.append(finalList.get(0));
+            finalList.remove(0);
+        }
+
+        return returnString.toString();
+    }
+
+    public static String decimalToBinary(int input, int minPlaces) {
+        int decimal = input;
+
+        // converts number to the target base, as an array
+        ArrayList<Integer> finalList = new ArrayList<>();
+        int remainder;
+        while (decimal > 0) {
+            remainder = decimal % 2;
+            decimal /= 2;
+            finalList.add(0, remainder);
+        }
+
+        // Make a String in the proper format and return it
+        StringBuilder returnString = new StringBuilder();
+        while (!finalList.isEmpty()) {
+            returnString.append(finalList.get(0));
+            finalList.remove(0);
+        }
+
+        String finalString = returnString.toString();
+        while (finalString.length() < minPlaces) {
+            finalString = "0" + finalString;
+        }
+
+        return finalString;
+    }
+
+    public static String decimalToTertiary(int input, int minPlaces) {
+        int decimal = input;
+
+        // converts number to the target base, as an array
+        ArrayList<Integer> finalList = new ArrayList<>();
+        int remainder;
+        while (decimal > 0) {
+            remainder = decimal % 3;
+            decimal /= 3;
+            finalList.add(0, remainder);
+        }
+
+        // Make a String in the proper format and return it
+        StringBuilder returnString = new StringBuilder();
+        while (!finalList.isEmpty()) {
+            returnString.append(finalList.get(0));
+            finalList.remove(0);
+        }
+
+        String finalString = returnString.toString();
+        while (finalString.length() < minPlaces) {
+            finalString = "0" + finalString;
+        }
+
+        return finalString;
+    }
 }
